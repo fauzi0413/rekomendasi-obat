@@ -630,44 +630,15 @@ def print_data(index):
         len(daftar_obat)
     )
 
-    hasil_list = []
-
-    for i in range(jumlah):
-
-        keluhan = (
-            daftar_keluhan[i]
-            if i < len(daftar_keluhan)
-            else "-"
+    hasil_list = [{
+        "keluhan": keluhan_text,
+        "obat": obat_text,
+        "obat_pendamping": obat_pendamping,
+        "keterangan": generate_keterangan(
+            keluhan_text,
+            daftar_obat[0]
         )
-
-
-        obat = (
-            daftar_obat[i]
-            if i < len(daftar_obat)
-            else "-"
-        )
-        hasil_list.append({
-
-            "keluhan": keluhan,
-
-            "diagnosa": p.get(
-                'diagnosa',
-                '-'
-            ),
-
-            "obat": obat,
-
-            "obat_pendamping":
-            obat_pendamping,
-
-            "prob":100,
-
-            "keterangan":
-            generate_keterangan(
-                keluhan,
-                obat
-            )
-        })
+    }]
 
     return render_template(
 
@@ -960,7 +931,7 @@ def predict():
         top_obat[2],
 
         "obat":
-        top_obat[0],
+        ", ".join(top_obat),
 
         "obat_pendamping":
         obat_pendamping_histori

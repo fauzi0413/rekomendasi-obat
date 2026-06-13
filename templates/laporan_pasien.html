@@ -421,87 +421,44 @@
 
     <div class="hasil-wrapper">
 
-        <div class="hasil-title">
+        <div class="hasil-wrapper">
+            <div class="hasil-title">
+                Hasil Rekomendasi Obat
+            </div>
 
-            Hasil Rekomendasi Obat
+            {% if hasil_list %}
 
-        </div>
-
-        {% if hasil_list %}
-
-            {% for h in hasil_list %}
+            {% set h = hasil_list[0] %}
 
             <div class="obat-box">
 
                 <div class="bagian-title">
-
-                    Keluhan {{ loop.index }}
-
+                    Ringkasan Hasil Analisis
                 </div>
 
                 <div class="isi-item">
-
-                    <strong>Keluhan:</strong>
-
-                    {{ h.keluhan }}
-
+                    <strong>Keluhan Pasien:</strong>
                 </div>
 
-                <!-- <div class="isi-item">
-
-                    <strong>Top 1:</strong>
-
-                    {{ h.top1 }}
-
+                <div class="keterangan-box">
+                    {{ p.keluhan }}
                 </div>
 
-                <div class="isi-item">
-
-                    <strong>Top 2:</strong>
-
-                    {{ h.top2 }}
-
-                </div>
+                <br>
 
                 <div class="isi-item">
-
-                    <strong>Top 3:</strong>
-
-                    {{ h.top3 }}
-
-                </div>
-
-                <div class="isi-item">
-
-                    <strong>Probabilitas:</strong>
-
-                    {{ h.prob }}%
-
-                </div> -->
-
-                <div class="isi-item">
-
                     <strong>Rekomendasi Obat:</strong>
-
                 </div>
 
                 <div class="obat-nama">
-
                     {{ h.obat }}
-
                 </div>
-
-                {% if loop.first %}
 
                 <div class="isi-item">
-
                     <strong>Obat Pendamping:</strong>
-
+                    <br>
                     {{ h.obat_pendamping }}
-
                 </div>
-
-                {% endif %}
 
                 <div class="keterangan-box">
 
@@ -515,17 +472,15 @@
 
             </div>
 
-            {% endfor %}
-
-        {% else %}
+            {% else %}
 
             <div class="obat-box">
-
                 Tidak ada data rekomendasi obat.
-
             </div>
 
-        {% endif %}
+            {% endif %}
+        </div>
+
 
     </div>
 
